@@ -11,9 +11,10 @@ public class MonsterController : MonoBehaviour
     {
         Monster_Hp -= Damage;
 
-        if (Monster_Hp < 0)
+        if (Monster_Hp <= 0)
         {
-            Destroy(this.gameObject);
+            GameObject temp = this.gameObject;  //나 자신을 가져와서 temp 에 입력한다.
+            Destroy(temp);
         }
     }
 }

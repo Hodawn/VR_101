@@ -20,6 +20,22 @@ public class ProjectileMove : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)             //trigger 함수
+    {       //벽에 충돌시 파괴
+        if (other.gameObject.tag == "Wall")                //Name -> Tag 로 변환
+        {
+            Destroy(this.gameObject);
+        }
+        //몬스터 충돌시
+        if (other.gameObject.tag == "Monster")
+        {
+            //몬스터에게 데미지를 주고 사라진다.
+            other.gameObject.GetComponent<MonsterController>().Damaged(1);
+            Destroy(this.gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     private void FixedUpdate()
     {
